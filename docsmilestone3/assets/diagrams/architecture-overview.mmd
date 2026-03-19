@@ -1,0 +1,13 @@
+flowchart LR
+  Main["main.tsx"] --> Lazy["React.lazy(CrudScreen)"]
+  Main --> Shell["Loading shell"]
+  Lazy --> Screen["CrudScreen"]
+  Screen --> Metadata["userMetadata"]
+  Metadata --> Form["DynamicForm"]
+  Metadata --> Logic["useCrudLogic"]
+  Logic --> Validation["Zod + React Hook Form"]
+  Logic --> Records["In-memory user records"]
+  Records --> Table["EntityTable"]
+  Logic --> Metrics["Summary counters"]
+  Tests["Vitest + Playwright"] --> Screen
+  Audit["Lighthouse + bundle scripts"] --> Main

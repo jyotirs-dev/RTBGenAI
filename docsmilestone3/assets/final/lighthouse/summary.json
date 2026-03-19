@@ -1,0 +1,25 @@
+{
+  "categories": {
+    "performance": 95,
+    "accessibility": 100,
+    "best-practices": 96,
+    "seo": 100
+  },
+  "metrics": {
+    "firstContentfulPaint": "2.3 s",
+    "largestContentfulPaint": "2.4 s",
+    "speedIndex": "2.3 s",
+    "totalBlockingTime": "0 ms",
+    "interactive": "2.4 s"
+  },
+  "opportunities": [
+    {
+      "url": "http://127.0.0.1:4173/assets/form-vendor-Cnvso62Y.js",
+      "wastedBytes": 64588
+    },
+    {
+      "url": "http://127.0.0.1:4173/assets/react-vendor-BNPuDv6A.js",
+      "wastedBytes": 51747
+    }
+  ]
+}

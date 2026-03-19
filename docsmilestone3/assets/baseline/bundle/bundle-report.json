@@ -1,0 +1,35 @@
+{
+  "label": "baseline",
+  "sourceDir": "/Users/jyotirsolanki/Development/RTBGenAI/docsmilestone3/assets/baseline/bundle/dist-snapshot/assets",
+  "generatedAt": "2026-03-19T07:17:54.874Z",
+  "totals": {
+    "rawBytes": 275015,
+    "gzipBytes": 84116,
+    "byType": {
+      "js": {
+        "rawBytes": 252398,
+        "gzipBytes": 79122,
+        "count": 1
+      },
+      "css": {
+        "rawBytes": 22617,
+        "gzipBytes": 4994,
+        "count": 1
+      }
+    }
+  },
+  "assets": [
+    {
+      "file": "index-D14VHg0G.js",
+      "extension": "js",
+      "rawBytes": 252398,
+      "gzipBytes": 79122
+    },
+    {
+      "file": "index-Bsm4L-Dg.css",
+      "extension": "css",
+      "rawBytes": 22617,
+      "gzipBytes": 4994
+    }
+  ]
+}

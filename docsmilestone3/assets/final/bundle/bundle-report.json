@@ -1,0 +1,59 @@
+{
+  "label": "final",
+  "sourceDir": "/Users/jyotirsolanki/Development/RTBGenAI/capstoneProject/dist/assets",
+  "generatedAt": "2026-03-19T07:20:47.609Z",
+  "totals": {
+    "rawBytes": 272520,
+    "gzipBytes": 83343,
+    "byType": {
+      "js": {
+        "rawBytes": 248364,
+        "gzipBytes": 78064,
+        "count": 5
+      },
+      "css": {
+        "rawBytes": 24156,
+        "gzipBytes": 5279,
+        "count": 1
+      }
+    }
+  },
+  "assets": [
+    {
+      "file": "react-vendor-BNPuDv6A.js",
+      "extension": "js",
+      "rawBytes": 137810,
+      "gzipBytes": 44152
+    },
+    {
+      "file": "form-vendor-Cnvso62Y.js",
+      "extension": "js",
+      "rawBytes": 87913,
+      "gzipBytes": 26327
+    },
+    {
+      "file": "index-D_-hMfS6.css",
+      "extension": "css",
+      "rawBytes": 24156,
+      "gzipBytes": 5279
+    },
+    {
+      "file": "CrudScreen-phcK6vbQ.js",
+      "extension": "js",
+      "rawBytes": 14404,
+      "gzipBytes": 4027
+    },
+    {
+      "file": "index--e8lyudq.js",
+      "extension": "js",
+      "rawBytes": 4305,
+      "gzipBytes": 1889
+    },
+    {
+      "file": "app-vendor-CWG1rEj-.js",
+      "extension": "js",
+      "rawBytes": 3932,
+      "gzipBytes": 1669
+    }
+  ]
+}

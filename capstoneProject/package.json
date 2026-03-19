@@ -7,11 +7,16 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "preview": "vite preview",
-    "test": "vitest run"
+    "test": "npm run test:unit",
+    "test:unit": "vitest run",
+    "test:e2e": "playwright test",
+    "test:e2e:headed": "playwright test --headed",
+    "build:analyze": "npm run build && node ./scripts/write-bundle-report.mjs --sourceDir ./dist/assets",
+    "audit:lighthouse": "node ./scripts/run-lighthouse.mjs",
+    "capture:app": "node ./scripts/capture-app-state.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
-    "@radix-ui/react-switch": "^1.2.6",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-hook-form": "^7.66.0",
@@ -26,6 +31,7 @@
     "@types/react-dom": "^18.3.7",
     "@vitejs/plugin-react": "^5.0.4",
     "jsdom": "^27.0.0",
+    "lighthouse": "^12.8.2",
     "playwright": "^1.58.2",
     "tailwindcss": "^4.1.13",
     "typescript": "^5.9.3",

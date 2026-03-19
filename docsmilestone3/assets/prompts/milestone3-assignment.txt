@@ -1,0 +1,67 @@
+in the capstone project inside this folder , your task is to do below tasks:
+Hands-On Tasks
+
+1. Generate Documentation (JSDoc / README)
+Goal: Reduce manual effort in code documentation
+	•	Generate JSDoc comments for existing functions
+	•	Create a complete README (setup, usage, architecture overview)
+	•	Review and refine AI-generated documentation
+
+2. Summarize PR Changes
+Goal: Improve team communication using AI summaries
+	•	Generate summaries from PR diffs
+	•	Include impact, risks, and testing instructions
+	•	Format into a reusable PR template
+
+3. Generate Dependency Map
+Goal: Understand complex codebases faster
+	•	Analyze project structure using AI
+	•	Identify module dependencies and shared utilities
+	•	Produce a structured dependency map
+
+4. Create Architecture Diagram
+Goal: Visualize component relationships and flow
+	•	Generate system design from codebase
+	•	Convert into diagram (Mermaid / Figma / draw.io)
+	•	Validate against actual implementation
+
+5. Generate Unit + E2E Tests
+Goal: Automate test coverage creation
+	•	Generate unit tests for key components
+	•	Create E2E test scenarios
+	•	Validate and fix generated tests
+
+6. Fix Lighthouse Issues via AI
+Goal: Learn to interpret reports and apply fixes
+	•	Run Lighthouse audit
+	•	Use AI to explain issues
+	•	Implement fixes and measure improvements
+
+7. Optimize Bundle & Lazy Loading
+Goal: Improve application performance
+	•	Identify large bundles and unused code
+	•	Implement code splitting and lazy loading
+	•	Verify bundle size reduction
+
+8. Analyze Performance Reports
+Goal: Prioritize optimization efforts effectively
+	•	Analyze Lighthouse / Web Vitals / DevTools reports
+	•	Use AI to suggest improvements
+	•	Rank fixes based on impact vs effort
+
+Deliverable
+
+AI-Assisted QA & Optimization Report
+
+Goal: Demonstrate ability to analyze, improve, and validate application quality using AI
+
+Deliverable Includes:
+	•	Generated documentation (JSDoc + README)
+	•	PR summaries
+	•	Dependency map
+	•	Architecture diagram
+	•	Unit and E2E test cases
+	•	Lighthouse report (before vs after improvements)
+	•	Performance optimization summary (bundle size, load time, key fixes)
+
+Document everything that you will do in docsmilestone3 with proofs or screenshots of deliverables, include original prompt also, you can reference docsmilestone2

@@ -1,6 +1,5 @@
 import type { BaseSyntheticEvent } from "react";
 import { Controller, type FieldErrors, type UseFormReturn } from "react-hook-form";
-import * as Switch from "@radix-ui/react-switch";
 
 import type { EntityMetadata, UserFieldName, UserFormValues } from "./types";
 
@@ -13,6 +12,7 @@ interface DynamicFormProps {
   onCancel: () => void;
 }
 
+/** Normalizes React Hook Form error messages to simple strings for the field renderer. */
 const getErrorMessage = (
   errors: FieldErrors<UserFormValues>,
   fieldName: UserFieldName,
@@ -21,6 +21,7 @@ const getErrorMessage = (
   return typeof message === "string" ? message : undefined;
 };
 
+/** Renders the metadata-driven user editor using the generated field configuration. */
 export const DynamicForm = ({
   metadata,
   form,
@@ -84,28 +85,32 @@ export const DynamicForm = ({
                   <div className="rounded-2xl border border-slate-200 bg-slate-50/80 p-4">
                     <div className="flex items-center justify-between gap-4">
                       <div>
-                        <label
-                          className="text-sm font-medium text-slate-900"
-                          htmlFor={field.name}
-                        >
-                          {field.label}
-                        </label>
+                        <p className="text-sm font-medium text-slate-900">{field.label}</p>
                         <p id={`${field.name}-hint`} className="mt-1 text-sm text-slate-500">
                           Control whether the user can actively access protected product areas.
                         </p>
                       </div>
-                      <Switch.Root
-                        id={field.name}
-                        aria-describedby={describedBy}
-                        aria-invalid={Boolean(errorMessage)}
-                        checked={controlledField.value}
-                        className="relative h-7 w-12 rounded-full bg-slate-300 transition data-[state=checked]:bg-emerald-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2"
-                        onBlur={controlledField.onBlur}
-                        onCheckedChange={controlledField.onChange}
-                        ref={controlledField.ref}
-                      >
-                        <Switch.Thumb className="block h-5 w-5 translate-x-1 rounded-full bg-white shadow transition-transform data-[state=checked]:translate-x-6" />
-                      </Switch.Root>
+                      <label className="inline-flex cursor-pointer items-center gap-3" htmlFor={field.name}>
+                        <span className="text-sm font-medium text-slate-700">
+                          {controlledField.value ? "Active" : "Inactive"}
+                        </span>
+                        <span className="relative">
+                          <input
+                            aria-describedby={describedBy}
+                            aria-invalid={Boolean(errorMessage)}
+                            aria-label={field.label}
+                            checked={controlledField.value}
+                            className="peer sr-only"
+                            id={field.name}
+                            onBlur={controlledField.onBlur}
+                            onChange={(event) => controlledField.onChange(event.target.checked)}
+                            ref={controlledField.ref}
+                            type="checkbox"
+                          />
+                          <span className="block h-7 w-12 rounded-full bg-slate-300 transition peer-checked:bg-emerald-500 peer-focus-visible:ring-2 peer-focus-visible:ring-emerald-500 peer-focus-visible:ring-offset-2" />
+                          <span className="pointer-events-none absolute left-1 top-1 h-5 w-5 rounded-full bg-white shadow transition-transform peer-checked:translate-x-5" />
+                        </span>
+                      </label>
                     </div>
                     {errorMessage ? (
                       <p id={errorId} className="mt-3 text-sm text-rose-600">

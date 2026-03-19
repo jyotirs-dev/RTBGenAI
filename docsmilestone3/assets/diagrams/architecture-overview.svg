@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="620" viewBox="0 0 1180 620" role="img" aria-labelledby="title desc">
+  <title id="title">Architecture Overview</title>
+  <desc id="desc">Metadata-driven CRUD architecture showing the lazy-loaded entry, logic, UI components, validation, and QA tooling.</desc>
+  <defs>
+    <style>
+      .bg { fill: #f8fafc; }
+      .box { fill: #ffffff; stroke: #0f172a; stroke-width: 2; rx: 18; ry: 18; }
+      .accent { fill: #ecfeff; stroke: #0f766e; stroke-width: 2; rx: 18; ry: 18; }
+      .tool { fill: #eff6ff; stroke: #1d4ed8; stroke-width: 2; rx: 18; ry: 18; }
+      .text { font-family: Arial, sans-serif; font-size: 18px; fill: #0f172a; font-weight: 700; }
+      .subtext { font-family: Arial, sans-serif; font-size: 14px; fill: #475569; }
+      .line { stroke: #0f172a; stroke-width: 2.5; marker-end: url(#arrow); fill: none; }
+      .line-accent { stroke: #0f766e; stroke-width: 2.5; marker-end: url(#arrowAccent); fill: none; }
+    </style>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#0f172a" />
+    </marker>
+    <marker id="arrowAccent" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#0f766e" />
+    </marker>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1180" height="620" />
+
+  <rect class="box" x="50" y="70" width="180" height="96" />
+  <text class="text" x="95" y="115">main.tsx</text>
+  <text class="subtext" x="82" y="142">Lazy entry + loading shell</text>
+
+  <rect class="accent" x="310" y="70" width="200" height="96" />
+  <text class="text" x="356" y="115">CrudScreen</text>
+  <text class="subtext" x="337" y="142">Screen composition + metadata</text>
+
+  <rect class="accent" x="590" y="50" width="220" height="110" />
+  <text class="text" x="641" y="95">useCrudLogic</text>
+  <text class="subtext" x="621" y="123">CRUD state + mock API</text>
+  <text class="subtext" x="631" y="145">defaults + schema builder</text>
+
+  <rect class="accent" x="590" y="220" width="220" height="110" />
+  <text class="text" x="648" y="267">DynamicForm</text>
+  <text class="subtext" x="625" y="295">Metadata-driven fields</text>
+  <text class="subtext" x="633" y="317">Accessible validation UI</text>
+
+  <rect class="accent" x="590" y="390" width="220" height="110" />
+  <text class="text" x="651" y="438">EntityTable</text>
+  <text class="subtext" x="619" y="466">Mobile cards + desktop table</text>
+  <text class="subtext" x="634" y="488">Edit / delete actions</text>
+
+  <rect class="box" x="900" y="70" width="220" height="96" />
+  <text class="text" x="949" y="115">Validation Stack</text>
+  <text class="subtext" x="929" y="142">React Hook Form + Zod</text>
+
+  <rect class="box" x="900" y="220" width="220" height="96" />
+  <text class="text" x="953" y="265">User Records</text>
+  <text class="subtext" x="934" y="292">Seeded list + edit state</text>
+
+  <rect class="tool" x="900" y="390" width="220" height="120" />
+  <text class="text" x="963" y="435">QA Tooling</text>
+  <text class="subtext" x="935" y="462">Vitest + Playwright + Lighthouse</text>
+  <text class="subtext" x="944" y="484">Bundle reports + screenshots</text>
+
+  <path class="line" d="M230 118 H310" />
+  <path class="line-accent" d="M510 118 H590" />
+  <path class="line-accent" d="M510 118 C550 118, 550 275, 590 275" />
+  <path class="line-accent" d="M510 118 C550 118, 550 445, 590 445" />
+  <path class="line" d="M810 105 H900" />
+  <path class="line" d="M810 275 H900" />
+  <path class="line" d="M810 445 H900" />
+  <path class="line" d="M1010 316 V390" />
+</svg>

@@ -1,0 +1,16 @@
+
+> rtbgenai-user-crud@1.0.0 test
+> vitest run
+
+
+ RUN  v3.2.4 /Users/jyotirsolanki/Development/RTBGenAI/capstoneProject
+
+ ✓ src/features/user-crud/CrudScreen.test.tsx (4 tests) 2342ms
+   ✓ CrudScreen > creates a new user after the simulated API delay  1111ms
+   ✓ CrudScreen > updates an existing record in edit mode  1109ms
+
+ Test Files  1 passed (1)
+      Tests  4 passed (4)
+   Start at  12:27:23
+   Duration  2.99s (transform 35ms, setup 39ms, collect 106ms, tests 2.34s, environment 245ms, prepare 29ms)
+

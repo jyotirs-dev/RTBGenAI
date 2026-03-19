@@ -12,6 +12,7 @@ const statusClasses: Record<"active" | "inactive", string> = {
   inactive: "bg-slate-200 text-slate-600",
 };
 
+/** Displays the current in-memory records as mobile cards and a desktop table. */
 export const EntityTable = ({ records, activeRecordId, onEdit, onDelete }: EntityTableProps) => {
   if (records.length === 0) {
     return (

@@ -1,0 +1,13 @@
+
+> rtbgenai-user-crud@1.0.0 build
+> tsc -b && vite build
+
+vite v7.3.1 building client environment for production...
+transforming...
+✓ 122 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.41 kB │ gzip:  0.28 kB
+dist/assets/index-Bsm4L-Dg.css   22.62 kB │ gzip:  4.99 kB
+dist/assets/index-D14VHg0G.js   252.40 kB │ gzip: 79.12 kB
+✓ built in 366ms

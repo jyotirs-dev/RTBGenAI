@@ -3,6 +3,7 @@ import { EntityTable } from "./EntityTable";
 import { type EntityMetadata, USER_ROLE_OPTIONS } from "./types";
 import { useCrudLogic } from "./useCrudLogic";
 
+/** Schema contract that drives the screen layout, defaults, and validation rules. */
 const userMetadata: EntityMetadata = {
   entity: "User",
   fields: [
@@ -36,6 +37,7 @@ const userMetadata: EntityMetadata = {
   ],
 };
 
+/** Composes the metadata-driven CRUD form, summary metrics, and record table into a single screen. */
 export const CrudScreen = () => {
   const { form, users, editingUser, isEditing, submitLabel, submitUser, startEditing, cancelEditing, deleteUser } =
     useCrudLogic(userMetadata);

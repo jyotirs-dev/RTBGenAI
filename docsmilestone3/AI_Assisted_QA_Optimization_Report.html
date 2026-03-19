@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>AI_Assisted_QA_Optimization_Report</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+</head>
+<body>
+<h1 id="ai-assisted-qa--optimization-report">AI-Assisted QA &amp;
+Optimization Report</h1>
+<p>Date: March 19, 2026</p>
+<h2 id="objective">Objective</h2>
+<p>This milestone demonstrates how AI can be used to document, validate,
+optimize, and summarize a frontend application. The target application
+is the metadata-driven React CRUD screen in
+<code>capstoneProject</code>.</p>
+<h2 id="current-project-context">Current Project Context</h2>
+<ul>
+<li>App type: Vite + React 18 + TypeScript single-screen CRUD demo</li>
+<li>Core feature: metadata-driven user creation, editing, validation,
+and deletion</li>
+<li>Validation stack: React Hook Form + Zod</li>
+<li>Test stack after this milestone: Vitest + Playwright</li>
+<li>Audit stack after this milestone: Lighthouse + custom bundle report
+scripts</li>
+</ul>
+<h2 id="original-assignment-prompt">Original Assignment Prompt</h2>
+<pre class="text"><code>in the capstone project inside this folder , your task is to do below tasks:
+Hands-On Tasks
+
+1. Generate Documentation (JSDoc / README)
+Goal: Reduce manual effort in code documentation
+    •   Generate JSDoc comments for existing functions
+    •   Create a complete README (setup, usage, architecture overview)
+    •   Review and refine AI-generated documentation
+
+2. Summarize PR Changes
+Goal: Improve team communication using AI summaries
+    •   Generate summaries from PR diffs
+    •   Include impact, risks, and testing instructions
+    •   Format into a reusable PR template
+
+3. Generate Dependency Map
+Goal: Understand complex codebases faster
+    •   Analyze project structure using AI
+    •   Identify module dependencies and shared utilities
+    •   Produce a structured dependency map
+
+4. Create Architecture Diagram
+Goal: Visualize component relationships and flow
+    •   Generate system design from codebase
+    •   Convert into diagram (Mermaid / Figma / draw.io)
+    •   Validate against actual implementation
+
+5. Generate Unit + E2E Tests
+Goal: Automate test coverage creation
+    •   Generate unit tests for key components
+    •   Create E2E test scenarios
+    •   Validate and fix generated tests
+
+6. Fix Lighthouse Issues via AI
+Goal: Learn to interpret reports and apply fixes
+    •   Run Lighthouse audit
+    •   Use AI to explain issues
+    •   Implement fixes and measure improvements
+
+7. Optimize Bundle &amp; Lazy Loading
+Goal: Improve application performance
+    •   Identify large bundles and unused code
+    •   Implement code splitting and lazy loading
+    •   Verify bundle size reduction
+
+8. Analyze Performance Reports
+Goal: Prioritize optimization efforts effectively
+    •   Analyze Lighthouse / Web Vitals / DevTools reports
+    •   Use AI to suggest improvements
+    •   Rank fixes based on impact vs effort
+
+Deliverable
+
+AI-Assisted QA &amp; Optimization Report
+
+Goal: Demonstrate ability to analyze, improve, and validate application quality using AI
+
+Deliverable Includes:
+    •   Generated documentation (JSDoc + README)
+    •   PR summaries
+    •   Dependency map
+    •   Architecture diagram
+    •   Unit and E2E test cases
+    •   Lighthouse report (before vs after improvements)
+    •   Performance optimization summary (bundle size, load time, key fixes)
+
+Document everything that you will do in docsmilestone3 with proofs or screenshots of deliverables, include original prompt also, you can reference docsmilestone2</code></pre>
+<h2 id="prompt-log">Prompt Log</h2>
+<p>The task-specific AI prompts used during execution are recorded in <a
+href="assets/prompts/ai-prompts.md">assets/prompts/ai-prompts.md</a>.</p>
+<h2 id="work-log">Work Log</h2>
+<ol type="1">
+<li>Inspected the repository and confirmed the target app lived in
+<code>capstoneProject</code>, with milestone 2 artifacts available for
+reference in <code>docsmilestone2</code>.</li>
+<li>Captured a clean baseline before changing application code: unit
+test log, production build log, build snapshot, browser screenshots, and
+a Lighthouse report.</li>
+<li>Added JSDoc to the exported types, components, hook, and non-trivial
+helper functions in the CRUD feature.</li>
+<li>Created a project README, an architecture/dependency document, and a
+reusable PR summary template.</li>
+<li>Expanded unit coverage for invalid input, inactive-user creation,
+cancel/reset, and empty-state behavior.</li>
+<li>Added Playwright E2E coverage for load, create, update, delete,
+validation, and a mobile smoke test.</li>
+<li>Added reusable scripts for screenshot capture, Lighthouse execution,
+and bundle analysis.</li>
+<li>Optimized the production bundle by replacing the Radix switch with a
+native checkbox toggle, lazy-loading the feature entry, preloading the
+lazy chunk, and enabling manual vendor chunk splitting in Vite.</li>
+<li>Added document metadata in <code>index.html</code> to address SEO
+gaps discovered in the Lighthouse baseline.</li>
+<li>Reran the full validation loop after the changes and saved the
+resulting evidence into <code>docsmilestone3/assets/</code>.</li>
+</ol>
+<h2 id="generated-documentation">Generated Documentation</h2>
+<h3 id="jsdoc">JSDoc</h3>
+<p>JSDoc was added to:</p>
+<ul>
+<li><code>capstoneProject/src/features/user-crud/types.ts</code></li>
+<li><code>capstoneProject/src/features/user-crud/useCrudLogic.ts</code></li>
+<li><code>capstoneProject/src/features/user-crud/DynamicForm.tsx</code></li>
+<li><code>capstoneProject/src/features/user-crud/EntityTable.tsx</code></li>
+<li><code>capstoneProject/src/features/user-crud/CrudScreen.tsx</code></li>
+</ul>
+<p>The comments document the metadata contracts, hook return shape,
+schema/default builders, state helpers, and the purpose of the major UI
+components.</p>
+<h3 id="readme">README</h3>
+<p>The canonical project README is now in <a
+href="../capstoneProject/README.md">../capstoneProject/README.md</a>. It
+includes:</p>
+<ul>
+<li>setup and script usage</li>
+<li>feature usage notes</li>
+<li>architecture overview</li>
+<li>dependency map summary</li>
+<li>Mermaid architecture diagram</li>
+<li>testing workflow</li>
+<li>Lighthouse and bundle-analysis workflow</li>
+</ul>
+<h2 id="pr-summary">PR Summary</h2>
+<p>The reusable template lives in <a
+href="../capstoneProject/docs/PR_Summary_Template.md">../capstoneProject/docs/PR_Summary_Template.md</a>.
+The concrete milestone summary is stored in <a
+href="assets/PR_Summary_Milestone3.md">assets/PR_Summary_Milestone3.md</a>.</p>
+<h3 id="generated-summary">Generated Summary</h3>
+<p><strong>Summary</strong></p>
+<p>This change turns the CRUD demo into a repeatable QA and optimization
+exercise by adding code documentation, a README, dependency/architecture
+docs, unit and E2E coverage, Lighthouse and bundle-report automation,
+and a milestone evidence pack.</p>
+<p><strong>Impact</strong></p>
+<ul>
+<li>Documentation is now available both in code and in project-level
+docs.</li>
+<li>QA workflows are repeatable through <code>npm run test</code>,
+<code>npm run test:e2e</code>, <code>npm run capture:app</code>, and
+<code>npm run audit:lighthouse</code>.</li>
+<li>The production bundle is split into cacheable chunks, the main
+feature is lazy-loaded, and SEO metadata is now present in
+<code>index.html</code>.</li>
+</ul>
+<p><strong>Risks</strong></p>
+<ul>
+<li>The app now depends on a lazy-loaded feature chunk and a local
+Chrome installation for the audit automation.</li>
+<li>Manual chunking changes production asset names and increases the
+number of files in <code>dist/assets</code>.</li>
+</ul>
+<p><strong>Testing Instructions</strong></p>
+<ul>
+<li><code>npm run test</code></li>
+<li><code>npm run test:e2e</code></li>
+<li><code>npm run build</code></li>
+<li><code>node ./scripts/write-bundle-report.mjs --sourceDir ./dist/assets</code></li>
+<li><code>npm run audit:lighthouse -- --outputDir ./output/lighthouse --label pr</code></li>
+</ul>
+<h2 id="dependency-map">Dependency Map</h2>
+<p>The validated dependency document lives in <a
+href="../capstoneProject/docs/Architecture_Dependency_Map.md">../capstoneProject/docs/Architecture_Dependency_Map.md</a>.</p>
+<h3 id="structured-summary">Structured Summary</h3>
+<table>
+<thead>
+<tr>
+<th>Module</th>
+<th>Direct Dependencies</th>
+<th>Responsibility</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>src/main.tsx</code></td>
+<td><code>CrudScreen</code>, <code>styles.css</code>,
+<code>react</code>, <code>react-dom</code></td>
+<td>Bootstraps the app and lazy-loads the feature entry.</td>
+</tr>
+<tr>
+<td><code>CrudScreen.tsx</code></td>
+<td><code>DynamicForm</code>, <code>EntityTable</code>,
+<code>types.ts</code>, <code>useCrudLogic.ts</code></td>
+<td>Declares metadata and composes the screen.</td>
+</tr>
+<tr>
+<td><code>DynamicForm.tsx</code></td>
+<td><code>types.ts</code>, <code>react-hook-form</code></td>
+<td>Maps metadata into accessible inputs.</td>
+</tr>
+<tr>
+<td><code>EntityTable.tsx</code></td>
+<td><code>types.ts</code></td>
+<td>Displays current records as cards and table rows.</td>
+</tr>
+<tr>
+<td><code>useCrudLogic.ts</code></td>
+<td><code>react</code>, <code>react-hook-form</code>,
+<code>@hookform/resolvers</code>, <code>zod</code>,
+<code>types.ts</code></td>
+<td>Builds validation, defaults, and CRUD state.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="mermaid-source">Mermaid Source</h3>
+<p>The Mermaid dependency graph source is stored in <a
+href="assets/diagrams/dependency-map.mmd">assets/diagrams/dependency-map.mmd</a>.</p>
+<h2 id="architecture-diagram">Architecture Diagram</h2>
+<p>The Mermaid source of the architecture diagram is stored in <a
+href="assets/diagrams/architecture-overview.mmd">assets/diagrams/architecture-overview.mmd</a>.
+A rendered SVG was created for export-friendly documentation.</p>
+<p><img src="assets/diagrams/architecture-overview.png"
+alt="Architecture overview" /></p>
+<h2 id="unit-and-e2e-test-cases">Unit and E2E Test Cases</h2>
+<h3 id="unit-coverage">Unit Coverage</h3>
+<p>Unit coverage now validates:</p>
+<ul>
+<li>seeded render state</li>
+<li>required-field validation</li>
+<li>trimmed name and invalid-email validation</li>
+<li>create flow</li>
+<li>inactive-status create flow</li>
+<li>update flow</li>
+<li>cancel/reset behavior</li>
+<li>empty-state rendering after deletes</li>
+</ul>
+<p>Proof: <a
+href="assets/final/logs/npm-test.txt">assets/final/logs/npm-test.txt</a></p>
+<h3 id="e2e-coverage">E2E Coverage</h3>
+<p>Playwright E2E coverage now validates:</p>
+<ul>
+<li>application load</li>
+<li>create flow</li>
+<li>update flow</li>
+<li>delete flow</li>
+<li>validation error path</li>
+<li>mobile-card layout smoke test</li>
+</ul>
+<p>Proof: <a
+href="assets/final/logs/npm-test-e2e.txt">assets/final/logs/npm-test-e2e.txt</a></p>
+<h2 id="screenshots-of-deliverables">Screenshots of Deliverables</h2>
+<h3 id="final-dashboard">Final Dashboard</h3>
+<p><img src="assets/final/screenshots/dashboard.png"
+alt="Final dashboard" /></p>
+<h3 id="final-edit-mode">Final Edit Mode</h3>
+<p><img src="assets/final/screenshots/edit-mode.png"
+alt="Final edit mode" /></p>
+<h3 id="final-created-record-state">Final Created Record State</h3>
+<p><img src="assets/final/screenshots/created-record.png"
+alt="Final created record" /></p>
+<h2 id="lighthouse-report-before-vs-after">Lighthouse Report: Before vs
+After</h2>
+<p>Baseline artifacts:</p>
+<ul>
+<li>HTML: <a
+href="assets/baseline/lighthouse/baseline-audit.report.html">assets/baseline/lighthouse/baseline-audit.report.html</a></li>
+<li>JSON: <a
+href="assets/baseline/lighthouse/baseline-audit.report.json">assets/baseline/lighthouse/baseline-audit.report.json</a></li>
+</ul>
+<p>Final artifacts:</p>
+<ul>
+<li>HTML: <a
+href="assets/final/lighthouse/final-audit.report.html">assets/final/lighthouse/final-audit.report.html</a></li>
+<li>JSON: <a
+href="assets/final/lighthouse/final-audit.report.json">assets/final/lighthouse/final-audit.report.json</a></li>
+</ul>
+<h3 id="category-scores">Category Scores</h3>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th style="text-align: right;">Baseline</th>
+<th style="text-align: right;">Final</th>
+<th style="text-align: right;">Change</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Performance</td>
+<td style="text-align: right;">95</td>
+<td style="text-align: right;">95</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>Accessibility</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>Best Practices</td>
+<td style="text-align: right;">96</td>
+<td style="text-align: right;">96</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>SEO</td>
+<td style="text-align: right;">90</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">+10</td>
+</tr>
+</tbody>
+</table>
+<h3 id="key-metrics">Key Metrics</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Baseline</th>
+<th>Final</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>First Contentful Paint</td>
+<td>2.3 s</td>
+<td>2.3 s</td>
+</tr>
+<tr>
+<td>Largest Contentful Paint</td>
+<td>2.4 s</td>
+<td>2.4 s</td>
+</tr>
+<tr>
+<td>Speed Index</td>
+<td>2.3 s</td>
+<td>2.3 s</td>
+</tr>
+<tr>
+<td>Total Blocking Time</td>
+<td>0 ms</td>
+<td>0 ms</td>
+</tr>
+<tr>
+<td>Interactive</td>
+<td>2.4 s</td>
+<td>2.4 s</td>
+</tr>
+</tbody>
+</table>
+<h3 id="ai-assisted-interpretation">AI-Assisted Interpretation</h3>
+<ul>
+<li>The baseline report already had strong performance, accessibility,
+and best-practices scores, so the most actionable issue was SEO metadata
+completeness.</li>
+<li>The largest JavaScript opportunity in the baseline was a single
+monolithic <code>index</code> bundle with <code>129,043</code> unused
+bytes.</li>
+<li>After the optimization pass, the app still scored <code>95</code>
+for performance, but the unused JavaScript opportunity was split across
+<code>form-vendor</code> and <code>react-vendor</code>, reducing
+combined wasted bytes to <code>116,335</code>.</li>
+<li>Adding a description and theme metadata closed the SEO gap and
+raised the SEO score from <code>90</code> to <code>100</code>.</li>
+</ul>
+<p>Proof summaries:</p>
+<ul>
+<li>Baseline summary: <a
+href="assets/baseline/lighthouse/summary.json">assets/baseline/lighthouse/summary.json</a></li>
+<li>Final summary: <a
+href="assets/final/lighthouse/summary.json">assets/final/lighthouse/summary.json</a></li>
+</ul>
+<h2 id="performance-optimization-summary">Performance Optimization
+Summary</h2>
+<h3 id="bundle-comparison">Bundle Comparison</h3>
+<table>
+<thead>
+<tr>
+<th>Measure</th>
+<th style="text-align: right;">Baseline</th>
+<th style="text-align: right;">Final</th>
+<th style="text-align: right;">Change</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Total raw assets</td>
+<td style="text-align: right;">268.57 kB</td>
+<td style="text-align: right;">266.13 kB</td>
+<td style="text-align: right;">-2.44 kB</td>
+</tr>
+<tr>
+<td>Total gzip assets</td>
+<td style="text-align: right;">82.14 kB</td>
+<td style="text-align: right;">81.39 kB</td>
+<td style="text-align: right;">-0.75 kB</td>
+</tr>
+<tr>
+<td>Largest JS file</td>
+<td style="text-align: right;">246.48 kB</td>
+<td style="text-align: right;">134.58 kB</td>
+<td style="text-align: right;">-111.90 kB</td>
+</tr>
+<tr>
+<td>Number of JS files</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">+4</td>
+</tr>
+</tbody>
+</table>
+<h3 id="key-fixes">Key Fixes</h3>
+<ul>
+<li>Replaced <code>@radix-ui/react-switch</code> with a native
+checkbox-based toggle to remove a production dependency that was heavy
+for this small use case.</li>
+<li>Lazy-loaded <code>CrudScreen</code> from <code>main.tsx</code> and
+preloaded the lazy chunk so the feature still loads quickly.</li>
+<li>Split the build into <code>react-vendor</code>,
+<code>form-vendor</code>, <code>app-vendor</code>, and feature-specific
+chunks through Vite <code>manualChunks</code>.</li>
+<li>Added a bundle-report script so future comparisons can be rerun
+directly against <code>dist/assets</code>.</li>
+</ul>
+<h3 id="evidence">Evidence</h3>
+<ul>
+<li>Baseline bundle report: <a
+href="assets/baseline/bundle/bundle-report.md">assets/baseline/bundle/bundle-report.md</a></li>
+<li>Final bundle report: <a
+href="assets/final/bundle/bundle-report.md">assets/final/bundle/bundle-report.md</a></li>
+</ul>
+<h2 id="validation-results">Validation Results</h2>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>npm run test</code></td>
+<td>Passed: 8 tests</td>
+</tr>
+<tr>
+<td><code>npm run test:e2e</code></td>
+<td>Passed: 6 tests</td>
+</tr>
+<tr>
+<td><code>npm run build</code></td>
+<td>Passed</td>
+</tr>
+<tr>
+<td><code>npm run audit:lighthouse</code></td>
+<td>Passed</td>
+</tr>
+</tbody>
+</table>
+<p>Supporting files:</p>
+<ul>
+<li>Unit log: <a
+href="assets/final/logs/npm-test.txt">assets/final/logs/npm-test.txt</a></li>
+<li>E2E log: <a
+href="assets/final/logs/npm-test-e2e.txt">assets/final/logs/npm-test-e2e.txt</a></li>
+<li>Build log: <a
+href="assets/final/logs/npm-build.txt">assets/final/logs/npm-build.txt</a></li>
+<li>Playwright HTML report: <a
+href="assets/final/logs/playwright-report/index.html">assets/final/logs/playwright-report/index.html</a></li>
+</ul>
+<h2 id="remaining-risks-and-follow-up-ideas">Remaining Risks and
+Follow-Up Ideas</h2>
+<ul>
+<li>The form-validation vendor chunk is still the largest JS opportunity
+because the app is intentionally small and ships form + validation logic
+to the client.</li>
+<li>Lighthouse automation assumes a locally installed Chrome binary. If
+the environment changes, <code>CHROME_PATH</code> should be set
+explicitly.</li>
+<li>The app has a single feature route, so bundle splitting mostly
+improves cacheability and audit transparency rather than dramatically
+lowering total transferred bytes.</li>
+</ul>
+</body>
+</html>

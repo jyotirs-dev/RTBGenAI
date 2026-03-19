@@ -1,0 +1,19 @@
+
+> rtbgenai-user-crud@1.0.0 test:e2e
+> playwright test
+
+
+Running 6 tests using 1 worker
+
+(node:69204) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:69204) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 e2e/crud-flow.spec.ts:30:1 › loads the seeded records and summary cards (346ms)
+  ✓  2 e2e/crud-flow.spec.ts:41:1 › creates a new user (2.2s)
+  ✓  3 e2e/crud-flow.spec.ts:56:1 › updates an existing user (2.2s)
+  ✓  4 e2e/crud-flow.spec.ts:66:1 › deletes an existing user (344ms)
+  ✓  5 e2e/crud-flow.spec.ts:73:1 › shows validation feedback for invalid submission (349ms)
+  ✓  6 e2e/crud-flow.spec.ts:89:3 › responsive smoke › renders the mobile card layout (265ms)
+
+  6 passed (6.9s)

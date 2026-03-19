@@ -37,17 +37,20 @@ const INITIAL_USERS: UserRecord[] = [
   },
 ];
 
+/** Wraps the mock API delay so create and update flows behave like async requests. */
 const wait = (durationMs: number): Promise<void> =>
   new Promise((resolve) => {
     globalThis.setTimeout(resolve, durationMs);
   });
 
+/** Returns a strongly typed field descriptor so helper functions can read field-level rules safely. */
 const getFieldByName = <TName extends UserFieldMetadata["name"]>(
   metadata: EntityMetadata,
   name: TName,
 ): Extract<UserFieldMetadata, { name: TName }> | undefined =>
   metadata.fields.find((field): field is Extract<UserFieldMetadata, { name: TName }> => field.name === name);
 
+/** Builds a Zod schema directly from the metadata so the UI and validation rules stay aligned. */
 const buildUserSchema = (metadata: EntityMetadata) => {
   const fullNameField = getFieldByName(metadata, "fullName");
   const emailField = getFieldByName(metadata, "email");
@@ -82,6 +85,7 @@ const buildUserSchema = (metadata: EntityMetadata) => {
   });
 };
 
+/** Derives the form defaults from metadata to keep create and reset flows consistent. */
 const buildDefaultValues = (metadata: EntityMetadata): UserFormValues => {
   const roleField = getFieldByName(metadata, "role");
 
@@ -93,6 +97,7 @@ const buildDefaultValues = (metadata: EntityMetadata): UserFormValues => {
   };
 };
 
+/** Converts a stored record back into the form shape used by React Hook Form. */
 const toFormValues = (record: UserRecord): UserFormValues => ({
   fullName: record.fullName,
   email: record.email,
@@ -100,6 +105,7 @@ const toFormValues = (record: UserRecord): UserFormValues => ({
   status: record.status,
 });
 
+/** Generates a stable client-side record id even when `crypto.randomUUID` is unavailable. */
 const createRecordId = (): string => {
   if (typeof crypto !== "undefined" && typeof crypto.randomUUID === "function") {
     return crypto.randomUUID();
@@ -108,6 +114,7 @@ const createRecordId = (): string => {
   return `user-${Date.now()}-${Math.random().toString(16).slice(2, 10)}`;
 };
 
+/** Public state and actions exposed by the metadata-driven CRUD hook. */
 export interface UseCrudLogicResult {
   form: UseFormReturn<UserFormValues>;
   users: UserRecord[];
@@ -120,6 +127,7 @@ export interface UseCrudLogicResult {
   deleteUser: (userId: string) => void;
 }
 
+/** Owns the CRUD state machine, generated validation, and simulated persistence for the screen. */
 export const useCrudLogic = (metadata: EntityMetadata): UseCrudLogicResult => {
   const defaultValues = useMemo(() => buildDefaultValues(metadata), [metadata]);
   const validationSchema = useMemo(() => buildUserSchema(metadata), [metadata]);

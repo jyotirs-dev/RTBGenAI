@@ -1,0 +1,17 @@
+graph TD
+  Main["src/main.tsx"] --> Screen["CrudScreen.tsx"]
+  Main --> Styles["src/styles.css"]
+  Screen --> Form["DynamicForm.tsx"]
+  Screen --> Table["EntityTable.tsx"]
+  Screen --> Logic["useCrudLogic.ts"]
+  Screen --> Types["types.ts"]
+  Form --> RHF["react-hook-form"]
+  Form --> Types
+  Table --> Types
+  Logic --> React["react"]
+  Logic --> RHF
+  Logic --> Resolver["@hookform/resolvers"]
+  Logic --> Zod["zod"]
+  Logic --> Types
+  Unit["CrudScreen.test.tsx"] --> Screen
+  E2E["e2e/crud-flow.spec.ts"] --> Browser["playwright/test"]
