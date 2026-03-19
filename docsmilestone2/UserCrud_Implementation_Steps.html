@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>User CRUD Implementation Steps</title>
+    <style>
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        color: #0f172a;
+        line-height: 1.55;
+        margin: 40px;
+      }
+
+      h1,
+      h2 {
+        color: #0f172a;
+      }
+
+      h1 {
+        margin-bottom: 8px;
+      }
+
+      p,
+      li {
+        font-size: 14px;
+      }
+
+      code {
+        background: #e2e8f0;
+        border-radius: 4px;
+        padding: 1px 4px;
+      }
+
+      pre {
+        background: #f8fafc;
+        border: 1px solid #cbd5e1;
+        border-radius: 10px;
+        overflow-x: auto;
+        padding: 16px;
+        white-space: pre-wrap;
+      }
+
+      img {
+        border: 1px solid #cbd5e1;
+        border-radius: 14px;
+        display: block;
+        margin: 16px 0 24px;
+        max-width: 100%;
+      }
+
+      .caption {
+        color: #475569;
+        font-size: 13px;
+        margin-top: -12px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>User CRUD Implementation Steps</h1>
+    <p>
+      This document records the work completed to generate the metadata-driven React 18 / TypeScript CRUD screen for the
+      <strong>User</strong> entity.
+    </p>
+
+    <h2>Work Log</h2>
+    <ol>
+      <li>Inspected the workspace and confirmed there was no existing React application structure to extend safely.</li>
+      <li>Created a dedicated feature folder at <code>src/features/user-crud</code> to keep the CRUD module isolated and reusable.</li>
+      <li>Defined strict TypeScript contracts for metadata fields, the user form shape, supported roles, and persisted records.</li>
+      <li>Built a metadata-aware CRUD hook that generates default values, creates the Zod validation schema, manages edit state, and simulates 1 second API latency for create and update flows.</li>
+      <li>Implemented a dynamic form that maps field metadata into semantic inputs, accessible labels, inline validation messages, and a Radix switch for the boolean field.</li>
+      <li>Implemented a responsive entity list that renders mobile cards and a desktop table, with accessible edit and delete actions.</li>
+      <li>Composed the main screen with the schema configuration, summary metrics, form orchestration, and the entity table.</li>
+      <li>Added Vitest and React Testing Library coverage for render, validation, create, and edit workflows.</li>
+      <li>Scaffolded a minimal Vite + React 18 host application because the workspace originally did not contain a runnable frontend shell.</li>
+      <li>Installed the required dependencies, verified the production build, and executed the Vitest suite successfully.</li>
+      <li>Launched the local application on <code>http://127.0.0.1:4173/</code> and captured runtime screenshots with Playwright.</li>
+      <li>Created this implementation log, appended the original prompt, and converted it into a Word document for delivery.</li>
+    </ol>
+
+    <h2>Generated Files</h2>
+    <ul>
+      <li><code>src/features/user-crud/types.ts</code></li>
+      <li><code>src/features/user-crud/useCrudLogic.ts</code></li>
+      <li><code>src/features/user-crud/DynamicForm.tsx</code></li>
+      <li><code>src/features/user-crud/EntityTable.tsx</code></li>
+      <li><code>src/features/user-crud/CrudScreen.tsx</code></li>
+      <li><code>src/features/user-crud/CrudScreen.test.tsx</code></li>
+      <li><code>src/main.tsx</code></li>
+      <li><code>src/styles.css</code></li>
+      <li><code>src/test/setup.ts</code></li>
+      <li><code>package.json</code>, <code>vite.config.ts</code>, and TypeScript configuration files</li>
+      <li><code>scripts/capture-screenshots.mjs</code></li>
+      <li><code>docs/UserCrud_Implementation_Steps.docx</code></li>
+    </ul>
+
+    <h2>Verification Status</h2>
+    <p>
+      Runtime verification was completed on March 19, 2026. The local Vite application was launched successfully, the
+      production build completed successfully, the Vitest suite passed, and the screenshots below were captured from the
+      running screen.
+    </p>
+
+    <h2>Captured Screens</h2>
+    <p><strong>1. Initial dashboard state</strong></p>
+    <img alt="Initial dashboard state" src="../output/playwright/crud-dashboard.png" />
+    <p class="caption">
+      The default state shows the metadata-driven form, the seeded records, and the aggregate counters rendered from the
+      in-memory data set.
+    </p>
+
+    <p><strong>2. Edit mode</strong></p>
+    <img alt="Edit mode state" src="../output/playwright/crud-edit-mode.png" />
+    <p class="caption">
+      The form switches into edit mode when an existing user is selected, while the corresponding row remains highlighted
+      in the record list.
+    </p>
+
+    <p><strong>3. Updated record state</strong></p>
+    <img alt="Updated record state" src="../output/playwright/crud-updated-record.png" />
+    <p class="caption">
+      After the one-second simulated API delay, the updated record is reflected in the list and the edit state clears.
+    </p>
+
+    <p><strong>4. Created record state</strong></p>
+    <img alt="Created record state" src="../output/playwright/crud-created-record.png" />
+    <p class="caption">
+      A newly created user is inserted at the top of the list and the header metrics update immediately after the mock
+      create request resolves.
+    </p>
+
+    <h2>Original Prompt</h2>
+    <pre>Role:
+You are a Senior Frontend Architect and GenAI Specialist. Your goal is to generate a production-ready, metadata-driven CRUD (Create, Read, Update, Delete) screen.
+
+Context:
+
+Framework: React 18 / TypeScript
+
+Styling: Tailwind CSS (Responsive design)
+
+State Management: React Hook Form with Zod for validation
+
+Component Library: Headless UI or Radix UI (accessible primitives)
+
+Metadata Configuration (The Schema):
+Use the following JSON schema to drive the UI generation:
+
+JSON
+{
+  "entity": "User",
+  "fields": [
+    { "name": "fullName", "label": "Full Name", "type": "text", "validation": "required", "placeholder": "John Doe" },
+    { "name": "email", "label": "Email Address", "type": "email", "validation": "email", "placeholder": "john@example.com" },
+    { "name": "role", "label": "User Role", "type": "select", "options": ["Admin", "Editor", "Viewer"], "validation": "required" },
+    { "name": "status", "label": "Active Status", "type": "boolean", "defaultValue": true }
+  ]
+}
+Task:
+Generate a modular CRUD system based on the metadata above. Strictly follow these requirements:
+
+File-by-File Output: Do not provide a single monolithic file. Split the code into:
+
+types.ts: TypeScript interfaces for the metadata and the Entity.
+
+useCrudLogic.ts: A custom React hook to handle state, form submission, and API simulation.
+
+DynamicForm.tsx: A component that maps the metadata to input fields.
+
+EntityTable.tsx: A responsive table/list to display existing records.
+
+CrudScreen.tsx: The main orchestrator component.
+
+CrudScreen.test.tsx: Basic unit tests using Vitest/React Testing Library.
+
+Code Quality &amp; Constraints:
+
+No "any" types: Every object and function must be strictly typed.
+
+Accessibility: Use semantic HTML, ARIA labels, and ensure keyboard navigability.
+
+Single Responsibility: Each file must have only one job.
+
+Logic: Include "Mock API" delay (1 second) for Create/Update actions to simulate real-world usage.
+
+Format:
+Provide each file within its own Markdown code block with the filename as the header. Include a brief (1-sentence) explanation of why you structured the file this way.
+
+Document every work that you do to achive it and create word file with steps</pre>
+  </body>
+  </html>
