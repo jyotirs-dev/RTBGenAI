@@ -20,13 +20,7 @@ const getManualChunk = (id: string): string | undefined => {
 
 export default defineConfig({
   plugins: [react(), tailwindcss()],
-  build: {
-    rollupOptions: {
-      output: {
-        manualChunks: getManualChunk,
-      },
-    },
-  },
+  build: {},
   test: {
     environment: "jsdom",
     globals: true,

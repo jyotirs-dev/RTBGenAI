@@ -1,7 +1,7 @@
-import { DynamicForm } from "./DynamicForm";
-import { EntityTable } from "./EntityTable";
+import React, { useState, Suspense, lazy } from "react";
 import { type EntityMetadata, USER_ROLE_OPTIONS } from "./types";
-import { useCrudLogic } from "./useCrudLogic";
+
+const LazyFormSection = lazy(() => import("./LazyFormSection"));
 
 /** Schema contract that drives the screen layout, defaults, and validation rules. */
 const userMetadata: EntityMetadata = {
@@ -39,10 +39,7 @@ const userMetadata: EntityMetadata = {
 
 /** Composes the metadata-driven CRUD form, summary metrics, and record table into a single screen. */
 export const CrudScreen = () => {
-  const { form, users, editingUser, isEditing, submitLabel, submitUser, startEditing, cancelEditing, deleteUser } =
-    useCrudLogic(userMetadata);
-
-  const activeUsers = users.filter((user) => user.status).length;
+  const [stats, setStats] = useState({ total: 3, active: 2 }); // derived from INITIAL_USERS default
 
   return (
     <main className="min-h-screen bg-[radial-gradient(circle_at_top,_rgba(20,184,166,0.16),_transparent_38%),linear-gradient(180deg,_#f8fafc_0%,_#ecfeff_45%,_#f8fafc_100%)] px-4 py-8 text-slate-950 sm:px-6 lg:px-8">
@@ -63,33 +60,19 @@ export const CrudScreen = () => {
             <dl className="grid grid-cols-2 gap-4 rounded-[1.75rem] bg-slate-950 p-5 text-white shadow-inner">
               <div className="rounded-2xl bg-white/8 p-4">
                 <dt className="text-xs uppercase tracking-[0.2em] text-slate-300">Total Users</dt>
-                <dd className="mt-2 text-3xl font-semibold">{users.length}</dd>
+                <dd className="mt-2 text-3xl font-semibold">{stats.total}</dd>
               </div>
               <div className="rounded-2xl bg-white/8 p-4">
                 <dt className="text-xs uppercase tracking-[0.2em] text-slate-300">Active Users</dt>
-                <dd className="mt-2 text-3xl font-semibold">{activeUsers}</dd>
+                <dd className="mt-2 text-3xl font-semibold">{stats.active}</dd>
               </div>
             </dl>
           </div>
         </section>
 
-        <div className="grid gap-8 xl:grid-cols-[420px_minmax(0,1fr)]">
-          <DynamicForm
-            form={form}
-            isEditing={isEditing}
-            metadata={userMetadata}
-            onCancel={cancelEditing}
-            onSubmit={form.handleSubmit(submitUser)}
-            submitLabel={submitLabel}
-          />
-
-          <EntityTable
-            activeRecordId={editingUser?.id ?? null}
-            onDelete={deleteUser}
-            onEdit={startEditing}
-            records={users}
-          />
-        </div>
+        <Suspense fallback={<div className="h-64 animate-pulse rounded-[2rem] bg-slate-200/50" />}>
+          <LazyFormSection metadata={userMetadata} onStatsChange={setStats} />
+        </Suspense>
       </div>
     </main>
   );
