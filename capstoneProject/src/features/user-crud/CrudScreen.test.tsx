@@ -5,10 +5,12 @@ import { describe, expect, it } from "vitest";
 
 import { CrudScreen } from "./CrudScreen";
 
-const getActionButton = (name: RegExp): HTMLElement => {
-  const [button] = screen.getAllByRole("button", { name });
+const getActionButton = async (name: RegExp): Promise<HTMLElement> => {
+  const buttons = await screen.findAllByRole("button", { name }, { timeout: 5000 });
+  const button = buttons[0]; // Take the first button if multiple are found
+
   if (button === undefined) {
-    throw new Error(`Unable to find action button matching ${name.toString()}`);
+    throw new Error(`Unable to field action button matching ${name}`);
   }
 
   return button;
@@ -31,10 +33,14 @@ const getMetricValue = (label: string): HTMLElement => {
 };
 
 describe("CrudScreen", () => {
-  it("renders seeded records and the metadata-driven form", () => {
+  it("renders seeded records and the metadata-driven form", async () => {
     render(<CrudScreen />);
 
     expect(screen.getByRole("heading", { name: /user administration generated from a single schema contract/i })).toBeInTheDocument();
+    
+    // Wait for the lazy component content to appear
+    await screen.findByLabelText(/full name/i, {}, { timeout: 5000 });
+    
     expect(screen.getByLabelText(/full name/i)).toBeInTheDocument();
     expect(screen.getAllByText("Ada Lovelace")).not.toHaveLength(0);
     expect(screen.getAllByText("grace.hopper@example.com")).not.toHaveLength(0);
@@ -45,7 +51,7 @@ describe("CrudScreen", () => {
 
     render(<CrudScreen />);
 
-    await user.clear(screen.getByLabelText(/email address/i));
+    await user.clear(await screen.findByLabelText(/email address/i, {}, { timeout: 5000 }));
     await user.click(screen.getByRole("button", { name: /create user/i }));
 
     await waitFor(() => {
@@ -59,7 +65,7 @@ describe("CrudScreen", () => {
 
     render(<CrudScreen />);
 
-    await user.type(screen.getByLabelText(/full name/i), "   ");
+    await user.type(await screen.findByLabelText(/full name/i, {}, { timeout: 5000 }), "   ");
     await user.type(screen.getByLabelText(/email address/i), "not-an-email");
     await user.click(screen.getByRole("button", { name: /create user/i }));
 
@@ -74,7 +80,7 @@ describe("CrudScreen", () => {
 
     render(<CrudScreen />);
 
-    await user.type(screen.getByLabelText(/full name/i), "Jane Roe");
+    await user.type(await screen.findByLabelText(/full name/i, {}, { timeout: 5000 }), "Jane Roe");
     await user.type(screen.getByLabelText(/email address/i), "jane.roe@example.com");
     await user.selectOptions(screen.getByLabelText(/user role/i), "Editor");
     await user.click(screen.getByRole("button", { name: /create user/i }));
@@ -94,7 +100,7 @@ describe("CrudScreen", () => {
 
     render(<CrudScreen />);
 
-    await user.type(screen.getByLabelText(/full name/i), "Taylor Grey");
+    await user.type(await screen.findByLabelText(/full name/i, {}, { timeout: 5000 }), "Taylor Grey");
     await user.type(screen.getByLabelText(/email address/i), "taylor.grey@example.com");
     await user.selectOptions(screen.getByLabelText(/user role/i), "Viewer");
     await user.click(screen.getByRole("checkbox", { name: /active status/i }));
@@ -117,7 +123,11 @@ describe("CrudScreen", () => {
 
     render(<CrudScreen />);
 
-    await user.click(getActionButton(/edit ada lovelace/i));
+    // Wait for the lazy component content to appear
+    await screen.findByLabelText(/full name/i, {}, { timeout: 5000 });
+    
+    // getActionButton is now async and handles waiting
+    await user.click(await getActionButton(/edit ada lovelace/i));
 
     const fullNameInput = screen.getByLabelText(/full name/i);
     await user.clear(fullNameInput);
@@ -137,7 +147,11 @@ describe("CrudScreen", () => {
 
     render(<CrudScreen />);
 
-    await user.click(getActionButton(/edit ada lovelace/i));
+    // Wait for the lazy component content to appear
+    await screen.findByLabelText(/full name/i, {}, { timeout: 5000 });
+    
+    // getActionButton handles waiting
+    await user.click(await getActionButton(/edit ada lovelace/i));
 
     await user.clear(screen.getByLabelText(/full name/i));
     await user.type(screen.getByLabelText(/full name/i), "Temporary Name");
@@ -159,11 +173,15 @@ describe("CrudScreen", () => {
 
     render(<CrudScreen />);
 
-    await user.click(getActionButton(/delete ada lovelace/i));
-    await user.click(getActionButton(/delete grace hopper/i));
-    await user.click(getActionButton(/delete alan turing/i));
+    // Wait for the lazy component content to appear
+    await screen.findByLabelText(/full name/i, {}, { timeout: 5000 });
+    
+    // Delete all users
+    await user.click(await getActionButton(/delete ada lovelace/i));
+    await user.click(await getActionButton(/delete grace hopper/i));
+    await user.click(await getActionButton(/delete alan turing/i));
 
-    expect(screen.getByRole("heading", { name: /no users yet/i })).toBeInTheDocument();
+    expect(await screen.findByRole("heading", { name: /no users yet/i })).toBeInTheDocument();
     expect(getMetricValue("Total Users")).toHaveTextContent("0");
     expect(getMetricValue("Active Users")).toHaveTextContent("0");
   });
