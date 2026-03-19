@@ -1,6 +1,6 @@
 {
   "label": "baseline",
-  "sourceDir": "/Users/jyotirsolanki/Development/RTBGenAI/docsmilestone3/assets/baseline/bundle/dist-snapshot/assets",
+  "sourceDir": "./dist-snapshot/assets",
   "generatedAt": "2026-03-19T07:17:54.874Z",
   "totals": {
     "rawBytes": 275015,

@@ -1,6 +1,6 @@
 
 > rtbgenai-user-crud@1.0.0 audit:lighthouse
-> node ./scripts/run-lighthouse.mjs --outputDir /Users/jyotirsolanki/Development/RTBGenAI/docsmilestone3/assets/final/lighthouse --label final-audit
+> node ./scripts/run-lighthouse.mjs --outputDir ../lighthouse --label final-audit
 
 {
   "performance": 95,

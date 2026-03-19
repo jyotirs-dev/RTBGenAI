@@ -1,4 +1,4 @@
 
 > rtbgenai-user-crud@1.0.0 capture:app
-> node ./scripts/capture-app-state.mjs --outDir /Users/jyotirsolanki/Development/RTBGenAI/docsmilestone3/assets/final/screenshots
+> node ./scripts/capture-app-state.mjs --outDir ../screenshots
 

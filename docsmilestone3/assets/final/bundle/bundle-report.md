@@ -1,6 +1,6 @@
 # Bundle Report: final
 
-- Source directory: `/Users/jyotirsolanki/Development/RTBGenAI/capstoneProject/dist/assets`
+- Source directory: `../../../../capstoneProject/dist/assets`
 - Total raw size: 266.13 kB
 - Total gzip size: 81.39 kB
 
