@@ -13,6 +13,8 @@ Use these commands during development:
 | Script | Purpose |
 | --- | --- |
 | `npm run dev` | Start the local Vite development server. |
+| `npm run lint` | Run the flat ESLint configuration for the app and TypeScript config files. |
+| `npm run typecheck` | Run the TypeScript project references without producing build output. |
 | `npm run build` | Create a production build with manual chunking enabled. |
 | `npm run preview` | Preview the production build locally. |
 | `npm run test` | Run the Vitest suite. |
@@ -84,3 +86,10 @@ The milestone 3 performance pass focuses on reducing initial JavaScript and maki
 - `scripts/run-lighthouse.mjs` wraps Lighthouse so reports can be saved directly into the milestone evidence folders.
 
 The reusable PR summary format for this project lives in [PR_Summary_Template.md](/Users/jyotirsolanki/Development/RTBGenAI/capstoneProject/docs/PR_Summary_Template.md).
+
+## Docker and CI
+
+- `Dockerfile` uses a multi-stage build: Node 20 builds the app and unprivileged Nginx serves the compiled SPA on port `8080`.
+- `nginx/default.conf` handles SPA fallback routing with `try_files`, disables caching for `index.html`, and marks hashed assets as immutable.
+- `.github/workflows/frontend-pr-validation.yml` validates pull requests to `main` with dependency caching, linting, type-checking, unit tests, production build creation, Docker build smoke validation, and `dist` artifact upload.
+- Sensitive values are intentionally excluded from source control; any future deployment or registry integration should read tokens from GitHub Secrets rather than workflow YAML.

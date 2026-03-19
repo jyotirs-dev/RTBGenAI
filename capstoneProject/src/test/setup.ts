@@ -1,12 +1,14 @@
 import "@testing-library/jest-dom/vitest";
 import { vi } from "vitest";
 
+const noop = (): void => undefined;
+
 class ResizeObserverMock implements ResizeObserver {
-  observe(): void {}
+  observe = noop;
 
-  unobserve(): void {}
+  unobserve = noop;
 
-  disconnect(): void {}
+  disconnect = noop;
 }
 
 vi.stubGlobal("ResizeObserver", ResizeObserverMock);
