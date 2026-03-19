@@ -67,13 +67,13 @@ The import graph is centered on a single feature slice:
 | `EntityTable.tsx` | `types.ts` | Displays users as cards or rows. |
 | `useCrudLogic.ts` | `react`, `react-hook-form`, `@hookform/resolvers`, `zod`, `types.ts` | Encapsulates validation, edit state, and mock persistence. |
 
-For the full dependency map and Mermaid import graph, see [Architecture_Dependency_Map.md](/Users/jyotirsolanki/Development/RTBGenAI/capstoneProject/docs/Architecture_Dependency_Map.md).
+For the full dependency map and Mermaid import graph, see [Architecture_Dependency_Map.md](./docs/Architecture_Dependency_Map.md).
 
 ## Testing Workflow
 
-- Unit coverage lives in [CrudScreen.test.tsx](/Users/jyotirsolanki/Development/RTBGenAI/capstoneProject/src/features/user-crud/CrudScreen.test.tsx) and exercises render, validation, create, edit, cancel, delete, empty-state, and status-toggle flows.
-- E2E coverage lives in [crud-flow.spec.ts](/Users/jyotirsolanki/Development/RTBGenAI/capstoneProject/e2e/crud-flow.spec.ts) and validates the real browser flow plus a mobile smoke pass.
-- Global test setup lives in [setup.ts](/Users/jyotirsolanki/Development/RTBGenAI/capstoneProject/src/test/setup.ts) and stubs browser APIs required by jsdom.
+- Unit coverage lives in [CrudScreen.test.tsx](./src/features/user-crud/CrudScreen.test.tsx) and exercises render, validation, create, edit, cancel, delete, empty-state, and status-toggle flows.
+- E2E coverage lives in [crud-flow.spec.ts](./e2e/crud-flow.spec.ts) and validates the real browser flow plus a mobile smoke pass.
+- Global test setup lives in [setup.ts](./src/test/setup.ts) and stubs browser APIs required by jsdom.
 
 ## Performance and Audit Workflow
 
@@ -85,7 +85,7 @@ The milestone 3 performance pass focuses on reducing initial JavaScript and maki
 - `scripts/write-bundle-report.mjs` generates repeatable bundle reports from `dist/assets`.
 - `scripts/run-lighthouse.mjs` wraps Lighthouse so reports can be saved directly into the milestone evidence folders.
 
-The reusable PR summary format for this project lives in [PR_Summary_Template.md](/Users/jyotirsolanki/Development/RTBGenAI/capstoneProject/docs/PR_Summary_Template.md).
+The reusable PR summary format for this project lives in [PR_Summary_Template.md](./docs/PR_Summary_Template.md).
 
 ## Docker and CI
 

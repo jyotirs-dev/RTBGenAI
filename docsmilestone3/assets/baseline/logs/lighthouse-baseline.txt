@@ -267,7 +267,7 @@
 2026-03-19T07:03:27.154Z LH:status Auditing: 3rd parties
 2026-03-19T07:03:27.158Z LH:status Auditing: Optimize viewport for mobile
 2026-03-19T07:03:27.159Z LH:status Generating results...
-2026-03-19T07:03:27.169Z LH:Printer json output written to /Users/jyotirsolanki/Development/RTBGenAI/docsmilestone3/assets/baseline/lighthouse/baseline-audit.report.json
-2026-03-19T07:03:27.171Z LH:Printer html output written to /Users/jyotirsolanki/Development/RTBGenAI/docsmilestone3/assets/baseline/lighthouse/baseline-audit.report.html
+2026-03-19T07:03:27.169Z LH:Printer json output written to ../lighthouse/baseline-audit.report.json
+2026-03-19T07:03:27.171Z LH:Printer html output written to ../lighthouse/baseline-audit.report.html
 2026-03-19T07:03:27.171Z LH:CLI Protip: Run lighthouse with `--view` to immediately open the HTML report in your browser
 2026-03-19T07:03:27.171Z LH:ChromeLauncher Killing Chrome instance 57876

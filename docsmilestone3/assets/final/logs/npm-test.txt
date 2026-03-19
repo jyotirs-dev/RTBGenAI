@@ -7,7 +7,7 @@
 > vitest run
 
 
- RUN  v3.2.4 /Users/jyotirsolanki/Development/RTBGenAI/capstoneProject
+ RUN  v3.2.4 ../../../../capstoneProject
 
  ✓ src/features/user-crud/CrudScreen.test.tsx (8 tests) 3733ms
    ✓ CrudScreen > creates a new user after the simulated API delay  1105ms

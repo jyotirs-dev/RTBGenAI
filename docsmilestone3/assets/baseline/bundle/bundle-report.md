@@ -1,6 +1,6 @@
 # Bundle Report: baseline
 
-- Source directory: `/Users/jyotirsolanki/Development/RTBGenAI/docsmilestone3/assets/baseline/bundle/dist-snapshot/assets`
+- Source directory: `./dist-snapshot/assets`
 - Total raw size: 268.57 kB
 - Total gzip size: 82.14 kB
 

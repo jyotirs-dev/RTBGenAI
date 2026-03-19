@@ -48,25 +48,25 @@ This document records the work completed to generate, run, verify, and document 
 
 ### 1. Initial Dashboard State
 
-![Initial dashboard state](/Users/jyotirsolanki/Documents/RTBGenAI/milestone2/output/playwright/crud-dashboard.png)
+![Initial dashboard state](../../../docsmilestone2/output/playwright/crud-dashboard.png)
 
 The default state shows the metadata-driven form, the seeded records, and the aggregate counters rendered from the in-memory data set.
 
 ### 2. Edit Mode
 
-![Edit mode state](/Users/jyotirsolanki/Documents/RTBGenAI/milestone2/output/playwright/crud-edit-mode.png)
+![Edit mode state](../../../docsmilestone2/output/playwright/crud-edit-mode.png)
 
 The form switches into edit mode when an existing user is selected, while the corresponding row remains highlighted in the record list.
 
 ### 3. Updated Record State
 
-![Updated record state](/Users/jyotirsolanki/Documents/RTBGenAI/milestone2/output/playwright/crud-updated-record.png)
+![Updated record state](../../../docsmilestone2/output/playwright/crud-updated-record.png)
 
 After the one-second simulated API delay, the updated record is reflected in the list and the edit state clears.
 
 ### 4. Created Record State
 
-![Created record state](/Users/jyotirsolanki/Documents/RTBGenAI/milestone2/output/playwright/crud-created-record.png)
+![Created record state](../../../docsmilestone2/output/playwright/crud-created-record.png)
 
 A newly created user is inserted at the top of the list and the header metrics update immediately after the mock create request resolves.
 
