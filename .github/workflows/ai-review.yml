@@ -1,0 +1,16 @@
+name: AI PR Review
+on: [pull_request]
+permissions:
+  contents: read
+  pull-requests: write
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ProductDock/openai-pr-review-action@v1  # Or coderabbitai/ai-pr-reviewer@v2
+        with:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          prompt: "Act as a senior dev: check bugs, performance, and readability."
+          max_tokens: 1500
